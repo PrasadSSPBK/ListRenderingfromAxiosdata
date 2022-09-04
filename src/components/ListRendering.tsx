@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Table from 'react-bootstrap/Table';
+import { Link } from "react-router-dom";
+
 import IUser from '../models/IUser'
 import { UserServices } from "../services/UserServices";
 
@@ -27,7 +28,7 @@ useEffect(()=>{
     inProgress:true})
     
     UserServices.getAllUsers().then((res)=>{
-        console.log(res)
+       
         setState({...state,
         inProgress:false,
     user:res.data})
@@ -75,7 +76,11 @@ return(
                     return(
                         <tr key={each.id} >
                             <td className="bg-dark text-light fw-bold">{each.id}</td>
-                            <td className="bg-success fw-bold">{each.username}</td>
+                            <td className="bg-success fw-bold">
+                            <Link to={`/Userlist/${each.id}`} className="text-decoration-none text-warning">
+                            {each.username}
+                            </Link>
+                            </td>
                             <td className="bg-primary fw-bold">{each.name}</td>
                             <td className="bg-danger fw-bold">{each.phone}</td>
                             <td className="bg-warning fw-bold">{each.company.name}</td>
