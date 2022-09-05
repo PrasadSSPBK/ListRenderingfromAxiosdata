@@ -1,8 +1,9 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import IUser from '../models/IUser'
-import { UserServices } from "../services/UserServices";
+// import { UserServices } from "../services/UserServices";
 
 
 interface Iprops{
@@ -26,8 +27,11 @@ const ListRendering:React.FC<Iprops>=()=>{
 useEffect(()=>{
     setState({...state,
     inProgress:true})
+  
+  axios.get("https://jsonplaceholder.typicode.com/users")
     
-    UserServices.getAllUsers().then((res)=>{
+    // UserServices.getAllUsers()
+    .then((res)=>{
        
         setState({...state,
         inProgress:false,
@@ -92,8 +96,10 @@ return(
             </tbody>
 
         </table>
+        <p className='text-danger fw-bold text-center display-6'>*** Click on User Name to see user details</p>
         </>
        )}
+       
     </div>
     
 )

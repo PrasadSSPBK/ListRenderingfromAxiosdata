@@ -6,13 +6,14 @@ import About from './components/About';
 import Navbar from './components/Navbar';
 import { Routes ,Route} from 'react-router-dom';
 import UserDetails from './components/UserDetails';
+import Home from './components/Home';
 
 function App() {
   return (
     <React.Fragment>
         <Navbar/>
        <Routes>
-        {/* <Route path={"/"} element={<Home/>}/> */}
+        <Route path={"/"} element={<Home/>}/>
         <Route path={"/about"} element={<About/>}/>
         <Route path={"/Userlist"} element={<ListRendering/>}/>
         <Route path={"/Userlist/:id"} element={<UserDetails />}/>
