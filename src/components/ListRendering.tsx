@@ -96,7 +96,7 @@ return(
             </tbody>
 
         </table>
-        <p className='text-danger fw-bold text-center display-6'>*** Click on User Name to see user details</p>
+        <p className='text-danger fw-bold text-center display-6'>*** Click on UserName to see user details</p>
         </>
        )}
        
