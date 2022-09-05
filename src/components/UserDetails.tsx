@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import IUser from '../models/IUser';
-import { UserServices } from '../services/UserServices';
+// import { UserServices } from '../services/UserServices';
+import axios from 'axios'
 
 interface Params{
     id:string;
@@ -28,7 +29,9 @@ const UserDetails:React.FC<Iprops>=()=>{
         console.log(id)
         setState({...state,inProgress:true})
         if(id){
-            UserServices.getUserDetails(id).then((res)=>{
+            axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+            // UserServices.getUserDetails(id)
+            .then((res)=>{
                 console.log(res.data)
                 setState({...state,inProgress:false,user:res.data})
             }).catch((e)=>{
@@ -70,6 +73,7 @@ const UserDetails:React.FC<Iprops>=()=>{
                 }
                 
             </div>
+            
         </React.Fragment>
     )
 }
